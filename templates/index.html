@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-3xl font-bold">{% block title %} Index {% endblock %}</h1>
+    <h1>Hello World!</h1>
+    <h2>Welcome to {{ system_info.machine_name }}!</h2>
+    <em>{{ system_info.machine_name }}</em>
+{% endblock %}
+
+{% block footer %}
+    <h3>FlaskApp is a Flask web application written in Python.</h3>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div x-data="getData()">
+    <button @click="fetchData">Fetch Data</button>
+    <div x-show="responseData">
+      <!-- Display the responseData in the HTML -->
+      <pre><div x-text="responseData.result"></div></pre>
+    </div>
+  </div>
+    <h1>{% block title %} About {% endblock %}</h1>
+    <div class="stats stats-vertical lg:stats-horizontal shadow">
+  
+        <div class="stat">
+          <div class="stat-title">Machine name</div>
+          <div class="stat-value">{{ system_info.machine_name }}</div>
+          <div class="stat-desc">Jan 1st - Feb 1st</div>
+        </div>
+        
+        <div class="stat">
+          <div class="stat-title">Processor</div>
+          <div class="stat-value">{{ system_info.processor_name }}</div>
+          <div class="stat-desc">↗︎ 400 (22%)</div>
+        </div>
+        
+        <div class="stat">
+          <div class="stat-title">Hostname</div>
+          <div class="stat-value">{{ system_info.hostname }}</div>
+          <div class="stat-desc">↘︎ 90 (14%)</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-title">IP-address</div>
+            <div class="stat-value">{{ system_info.ip_address }}</div>
+            <div class="stat-desc">↘︎ 90 (14%)</div>
+          </div>
+        
+          <div class="stat">
+            <div class="stat-title">Disk usage</div>
+            <div class="stat-value">{{ system_info.root_disk_percent }}%</div>
+            <div class="stat-desc">↘︎ 90 (14%)</div>
+          </div>
+        
+      </div>
+{% endblock %}
+
+{% block footer %}
+    <h3>FlaskApp is a Flask web application written in Python.</h3>
+{% endblock %}
