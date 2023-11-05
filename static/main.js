@@ -7,7 +7,7 @@ function getData() {
       responseData: null,
       async fetchData() {
         try {
-          const response = await fetch('/run?command=date'); // Replace with your API endpoint
+          const response = await fetch('/run?command=df'); // Replace with your API endpoint
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
