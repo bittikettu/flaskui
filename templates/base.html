@@ -11,12 +11,16 @@
     <title>{% block title %} {% endblock %} - FlaskApp</title>
 </head>
 <body>
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar 
 <nav class="bg-blue-500 p-4">
     <div class="container mx-auto">
+        
         <div class="flex items-center justify-between">
             <div>
-                <a href="#" class="text-white text-2xl font-semibold">{{ system_info.machine_name }}</a>
+                <a href="#" class="text-white text-2xl font-semibold">      <svg height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360.92 77.85"><defs><style>.cls-1{fill:#005ca9;}.cls-2{fill:#5bc5f2;}.cls-3{fill:#1d1d1b;}</style></defs><title>exertus-logoAsset 1</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M77.52,36.92c-.39,3.76-4.44,7.85-7.09,9.78-8.17,6-16.94,9.4-22,11.45C30.16,65.5,11.72,69.63,12,70.67c-.18,1,26.38-2.54,46.6-9.49C66.75,58.36,80.88,53,88.89,44.9c2.36-2.38,4.77-5.95,4.77-10,0-4.58-2.42-7.95-6.29-11.51C86.12,22.24,78.74,15.19,54,6.76c-3-1-22.65-8.45-23.71-6.4-1.52,2.2,19.48,13.73,22.56,15.42,1.14.62,10.62,5.8,12,6.56C68.48,24.38,78.34,29.06,77.52,36.92Z"/><path class="cls-2" d="M54.29,40.93c.39-3.76,4.44-7.85,7.08-9.78,8.17-6,16.95-9.4,22-11.45,18.23-7.35,36.67-11.48,36.43-12.52.18-1-26.39,2.54-46.6,9.49C65.06,19.49,50.93,24.85,42.92,33c-2.36,2.38-4.78,5.95-4.78,10,0,4.58,2.42,7.95,6.3,11.51,1.25,1.14,8.62,8.2,33.34,16.63,3,1,22.65,8.45,23.72,6.4C103,75.29,82,63.76,78.94,62.07c-1.14-.63-10.62-5.81-12-6.56C63.33,53.47,53.47,48.78,54.29,40.93Z"/><path class="cls-2" d="M7.83,40.36C8,38.54,10,36.55,11.27,35.62A47.77,47.77,0,0,1,22,30.06C30.81,26.5,39.75,24.49,39.64,24c.08-.47-12.8,1.23-22.61,4.6-4,1.37-10.83,4-14.71,7.9A7.22,7.22,0,0,0,0,41.34c0,2.22,1.18,3.86,3.06,5.59.6.55,4.18,4,16.17,8.06,1.47.5,11,4.1,11.51,3.11.73-1.07-9.45-6.66-10.95-7.48-.55-.31-5.15-2.82-5.8-3.19C12.22,46.44,7.44,44.17,7.83,40.36Z"/><path id="path2929" class="cls-3" d="M115,53.43V27.57h26.48V32H121v5.78H133v4.4H121v6.41h20.7v4.87Zm33.87,0,12.26-13.29L148.66,27.57h8l8.27,8.78,7.85-8.78h6.93L168.4,39.46l13.94,14h-8.17l-9.46-10-8.74,10Zm39.91,0V27.57h26.47V32H194.8v5.78h11.94v4.4H194.8v6.41h20.7v4.87ZM244,32H230.5v7.2H244a3.67,3.67,0,0,0,2.14-.45,1.94,1.94,0,0,0,.57-1.6V34.07a1.89,1.89,0,0,0-.57-1.57A3.58,3.58,0,0,0,244,32ZM224.58,53.43V27.57h22.11a6.77,6.77,0,0,1,4.47,1.19,4.79,4.79,0,0,1,1.38,3.82v6.08a4.76,4.76,0,0,1-1.38,3.8,6.71,6.71,0,0,1-4.47,1.21h-3.37l11.93,9.76h-8.63L236.2,43.67h-5.7v9.76Zm51.33-21.24V53.43h-6V32.19H258V27.57h29.8v4.62Zm25.29-4.62v21h17.14v-21h6V47.32q0,3.54-1.31,4.82c-.89.86-2.58,1.29-5.1,1.29H301.59c-2.49,0-4.19-.43-5.08-1.29s-1.33-2.46-1.33-4.82V27.57Zm54.07,4.52H338.34v5.56h16.12q3.8,0,5.12,1.29c.9.87,1.34,2.47,1.34,4.83v3.55c0,2.34-.44,3.94-1.34,4.81s-2.59,1.3-5.12,1.3h-16c-2.53,0-4.24-.44-5.13-1.3S332,49.66,332,47.32v-.71l5.31-1.1v3.05h18.27V42.67H339.49c-2.51,0-4.2-.44-5.09-1.3s-1.32-2.47-1.32-4.82V33.69q0-3.52,1.32-4.83c.89-.86,2.58-1.29,5.09-1.29h14.67c2.43,0,4.11.42,5,1.24s1.39,2.32,1.39,4.44v.53L355.27,35Z"/></g></g></svg>
+{{ system_info.machine_name }}</a>
+
+
             </div>
             <div class="space-x-4">
                 <a href="{{ url_for('index') }}" class="text-white">FlaskApp</a>
@@ -24,7 +28,39 @@
             </div>
         </div>
     </div>
-</nav>
+</nav>-->
+
+<div class="navbar bg-base-100">
+    <div class="navbar-start">
+      <div class="dropdown">
+        <label tabindex="0" class="btn btn-ghost btn-circle">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+        </label>
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+          <li><a href="{{ url_for('index') }}" class="text-white">FlaskApp</a></li>
+          <li><a href="{{ url_for('log') }}" class="text-white">Syslog</a></li>
+          <li><a href="{{ url_for('about') }}" class="text-white">About</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="navbar-center">
+      <a class="btn btn-ghost normal-case text-xl">ECM Web configurator</a>
+    </div>
+    <div class="navbar-end">
+      <button class="btn btn-ghost btn-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+      </button>
+      <button class="btn btn-ghost btn-circle">
+        <div class="indicator">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+          <span class="badge badge-xs badge-primary indicator-item"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+
+
 <!-- Main Content Area -->
 <div class="container mx-auto p-8">
     <!-- Your content goes here -->
@@ -36,29 +72,10 @@
 
 <footer class="footer p-10 bg-base-200 text-base-content">
     <aside>
-      <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" class="fill-current"><path d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path></svg>
-      <p>ACME Industries Ltd.<br/>Providing reliable tech since 1992</p>
+      <svg height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360.92 77.85"><defs><style>.cls-1{fill:#005ca9;}.cls-2{fill:#5bc5f2;}.cls-3{fill:#1d1d1b;}</style></defs><title>exertus-logoAsset 1</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M77.52,36.92c-.39,3.76-4.44,7.85-7.09,9.78-8.17,6-16.94,9.4-22,11.45C30.16,65.5,11.72,69.63,12,70.67c-.18,1,26.38-2.54,46.6-9.49C66.75,58.36,80.88,53,88.89,44.9c2.36-2.38,4.77-5.95,4.77-10,0-4.58-2.42-7.95-6.29-11.51C86.12,22.24,78.74,15.19,54,6.76c-3-1-22.65-8.45-23.71-6.4-1.52,2.2,19.48,13.73,22.56,15.42,1.14.62,10.62,5.8,12,6.56C68.48,24.38,78.34,29.06,77.52,36.92Z"/><path class="cls-2" d="M54.29,40.93c.39-3.76,4.44-7.85,7.08-9.78,8.17-6,16.95-9.4,22-11.45,18.23-7.35,36.67-11.48,36.43-12.52.18-1-26.39,2.54-46.6,9.49C65.06,19.49,50.93,24.85,42.92,33c-2.36,2.38-4.78,5.95-4.78,10,0,4.58,2.42,7.95,6.3,11.51,1.25,1.14,8.62,8.2,33.34,16.63,3,1,22.65,8.45,23.72,6.4C103,75.29,82,63.76,78.94,62.07c-1.14-.63-10.62-5.81-12-6.56C63.33,53.47,53.47,48.78,54.29,40.93Z"/><path class="cls-2" d="M7.83,40.36C8,38.54,10,36.55,11.27,35.62A47.77,47.77,0,0,1,22,30.06C30.81,26.5,39.75,24.49,39.64,24c.08-.47-12.8,1.23-22.61,4.6-4,1.37-10.83,4-14.71,7.9A7.22,7.22,0,0,0,0,41.34c0,2.22,1.18,3.86,3.06,5.59.6.55,4.18,4,16.17,8.06,1.47.5,11,4.1,11.51,3.11.73-1.07-9.45-6.66-10.95-7.48-.55-.31-5.15-2.82-5.8-3.19C12.22,46.44,7.44,44.17,7.83,40.36Z"/><path id="path2929" class="cls-3" d="M115,53.43V27.57h26.48V32H121v5.78H133v4.4H121v6.41h20.7v4.87Zm33.87,0,12.26-13.29L148.66,27.57h8l8.27,8.78,7.85-8.78h6.93L168.4,39.46l13.94,14h-8.17l-9.46-10-8.74,10Zm39.91,0V27.57h26.47V32H194.8v5.78h11.94v4.4H194.8v6.41h20.7v4.87ZM244,32H230.5v7.2H244a3.67,3.67,0,0,0,2.14-.45,1.94,1.94,0,0,0,.57-1.6V34.07a1.89,1.89,0,0,0-.57-1.57A3.58,3.58,0,0,0,244,32ZM224.58,53.43V27.57h22.11a6.77,6.77,0,0,1,4.47,1.19,4.79,4.79,0,0,1,1.38,3.82v6.08a4.76,4.76,0,0,1-1.38,3.8,6.71,6.71,0,0,1-4.47,1.21h-3.37l11.93,9.76h-8.63L236.2,43.67h-5.7v9.76Zm51.33-21.24V53.43h-6V32.19H258V27.57h29.8v4.62Zm25.29-4.62v21h17.14v-21h6V47.32q0,3.54-1.31,4.82c-.89.86-2.58,1.29-5.1,1.29H301.59c-2.49,0-4.19-.43-5.08-1.29s-1.33-2.46-1.33-4.82V27.57Zm54.07,4.52H338.34v5.56h16.12q3.8,0,5.12,1.29c.9.87,1.34,2.47,1.34,4.83v3.55c0,2.34-.44,3.94-1.34,4.81s-2.59,1.3-5.12,1.3h-16c-2.53,0-4.24-.44-5.13-1.3S332,49.66,332,47.32v-.71l5.31-1.1v3.05h18.27V42.67H339.49c-2.51,0-4.2-.44-5.09-1.3s-1.32-2.47-1.32-4.82V33.69q0-3.52,1.32-4.83c.89-.86,2.58-1.29,5.09-1.29h14.67c2.43,0,4.11.42,5,1.24s1.39,2.32,1.39,4.44v.53L355.27,35Z"/></g></g></svg>
+      <p>Exertus OY<br/>20 years of engineering excelence</p>
     </aside> 
-    <nav>
-      <header class="footer-title">Services</header> 
-      <a class="link link-hover">Branding</a> 
-      <a class="link link-hover">Design</a> 
-      <a class="link link-hover">Marketing</a> 
-      <a class="link link-hover">Advertisement</a>
-    </nav> 
-    <nav>
-      <header class="footer-title">Company</header> 
-      <a class="link link-hover">About us</a> 
-      <a class="link link-hover">Contact</a> 
-      <a class="link link-hover">Jobs</a> 
-      <a class="link link-hover">Press kit</a>
-    </nav> 
-    <nav>
-      <header class="footer-title">Legal</header> 
-      <a class="link link-hover">Terms of use</a> 
-      <a class="link link-hover">Privacy policy</a> 
-      <a class="link link-hover">Cookie policy</a>
-    </nav>
+
   </footer>
     <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>

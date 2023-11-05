@@ -50,6 +50,10 @@ def index():
 def about():
     return render_template('about.html', system_info=system_info)
 
+@app.route('/log/')
+def log():
+    return render_template('syslog.html', system_info=system_info)
+
 @app.route('/run', methods=['GET'])
 def run_command():
     command = request.args.get('command')

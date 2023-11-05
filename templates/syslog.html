@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Syslog {% endblock %}</h1>
+<div x-data="getData()" x-init="fetchData">
+    <button class="btn" @click="fetchData">Refresh log</button>
+    <button class="btn" @click="download">Download</button>
+    <div x-show="responseData">
+      <!-- Display the responseData in the HTML -->
+      <div class="mockup-code">
+        <template x-for="item in responseData.result">
+            <pre :class="{ 'bg-warning text-warning-content': item.includes('warning'), 'bg-error text-error-content': item.includes('error') }" data-prefix="" x-text="item"></pre>
+        </template>
+      </div>
+      <button class="btn" @click="fetchData">Refresh log</button>
+      <button class="btn" @click="download">Download</button>
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+    <h3>FlaskApp is a Flask web application written in Python.</h3>
+{% endblock %}
