@@ -1,6 +1,6 @@
 # app.py
 import datetime
-from flask import Flask, render_template, request, jsonify,make_response
+from flask import Flask, render_template, request, jsonify,make_response, send_file
 import platform
 import socket
 import psutil
@@ -48,6 +48,14 @@ def netsku():
     json_result = json.loads(reslut)
     return render_template('partials/netstat.html',netstat=json_result, utc_dt=datetime.datetime.utcnow())
 
+
+@app.route("/syslog")
+def partsyslog():
+    reslut = run_system_command('cat /var/log/syslog')
+    reslut = reslut.split('\n')
+    reslut = list(filter(None, reslut))
+    return render_template('partials/syslog.html',syslog=reslut, utc_dt=datetime.datetime.utcnow())
+
 @app.route("/hola-mundo")
 def hola_mundo():
     body = "Hola Mundo!"
@@ -55,6 +63,12 @@ def hola_mundo():
         body,
         trigger={"event1": "A message", "event2": "Another message"},
     )
+
+@app.route('/download')
+def download():
+    path = '/var/log/syslog'
+    return send_file(path, as_attachment=True)
+
 
 @app.route("/")
 def index():
@@ -70,7 +84,7 @@ def ipaddr():
 def about():
     return render_template('about.html', system_info=system_info)
 
-@app.route('/log/')
+@app.route('/log')
 def log():
     return render_template('syslog.html', system_info=system_info)
 
