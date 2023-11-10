@@ -2,6 +2,13 @@
 
 {% block content %}
 <h1>{% block title %} About {% endblock %}</h1>
+
+
+<div hx-get="/net" hx-trigger="load,every 5s"></div>
+
+</div>
+
+
     <div class="stats stats-vertical lg:stats-horizontal shadow">
   
         <div class="stat">
@@ -39,4 +46,5 @@
 
 {% block footer %}
     <h3>FlaskApp is a Flask web application written in Python.</h3>
+    
 {% endblock %}

@@ -1,0 +1,32 @@
+<div>{{ utc_dt }}</div>
+
+
+<div class="overflow-x-auto">
+    <table class="table">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th></th>
+          <th>Interface</th>
+          <th>Rx</th>
+          <th>Tx</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- row 1 -->
+        {%for i in netstat%} 
+          {% if i.operstate == "DOWN" %}
+          <tr class="bg-orange-900">
+          {% else %}
+          <tr class="bg-green-900">
+          {% endif %}
+
+          <th>{{ i.ifindex }}</th>
+          <td>{{ i.ifname }}</td>
+          <td>{{ "%.2f"|format(i.stats64.rx.bytes / 1000000)}} MB</td>
+          <td>{{ "%.2f"|format(i.stats64.tx.bytes / 1000000)}} MB</td>
+        </tr>
+        {%endfor%} 
+      </tbody>
+    </table>
+  </div>

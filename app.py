@@ -1,6 +1,6 @@
 # app.py
 import datetime
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify,make_response
 import platform
 import socket
 import psutil
@@ -42,9 +42,29 @@ class SystemInfo:
 system_info = SystemInfo()
 app = Flask(__name__)
 
+@app.route("/net")
+def netsku():
+    reslut = run_system_command('ip -j -s link show')
+    json_result = json.loads(reslut)
+    return render_template('partials/netstat.html',netstat=json_result, utc_dt=datetime.datetime.utcnow())
+
+@app.route("/hola-mundo")
+def hola_mundo():
+    body = "Hola Mundo!"
+    return make_response(
+        body,
+        trigger={"event1": "A message", "event2": "Another message"},
+    )
+
 @app.route("/")
 def index():
     return render_template('index.html',system_info=system_info, utc_dt=datetime.datetime.utcnow())
+
+@app.route('/ipaddr', methods=['GET'])
+def ipaddr():
+    reslut = run_system_command('ip -j addr')
+    json_result = json.loads(reslut)
+    return jsonify(json_result)
 
 @app.route('/about/')
 def about():

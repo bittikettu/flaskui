@@ -3,7 +3,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script defer src="/static/alpine.min.js"></script>
+    <script src="/static/alpine.min.js"></script>
+    <script src="/static/htmx.min.js"></script>
 
 <link href="{{ url_for('static', filename='daisyui.css') }}" rel="stylesheet" type="text/css" />
 <script src="{{ url_for('static', filename='tailwind.js') }}"></script>
@@ -11,6 +12,7 @@
     <title>{% block title %} {% endblock %} - FlaskApp</title>
 </head>
 <body>
+
     <!-- Navigation Bar 
 <nav class="bg-blue-500 p-4">
     <div class="container mx-auto">
@@ -63,6 +65,8 @@
 
 <!-- Main Content Area -->
 <div class="container mx-auto p-8">
+
+
     <!-- Your content goes here -->
 
     <!-- <h1 class="text-3xl font-bold">Welcome to My Website</h1>-->
@@ -77,6 +81,5 @@
     </aside> 
 
   </footer>
-    <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>
