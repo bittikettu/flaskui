@@ -5,6 +5,9 @@
     <h1>Hello World!</h1>
     <h2>Welcome to {{ system_info.machine_name }}!</h2>
     <em>{{ system_info.machine_name }}</em>
+
+    <div id="userFormnew" hx-get="/userform" hx-trigger="load"></div>
+
 {% endblock %}
 
 {% block footer %}

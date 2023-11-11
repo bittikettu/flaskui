@@ -3,19 +3,13 @@
 {% block content %}
 <h1>{% block title %} About {% endblock %}</h1>
 
-
-<div hx-get="/net" hx-trigger="load,every 5s"></div>
-
-</div>
-
-
-    <div class="stats stats-vertical lg:stats-horizontal shadow">
+<div class="stats stats-vertical lg:stats-horizontal shadow">
   
-        <div class="stat">
-          <div class="stat-title">Machine name</div>
-          <div class="stat-value">{{ system_info.machine_name }}</div>
-          <div class="stat-desc">Jan 1st - Feb 1st</div>
-        </div>
+  <div class="stat">
+    <div class="stat-title">Machine name</div>
+    <div class="stat-value">{{ system_info.machine_name }}</div>
+    <div class="stat-desc">Jan 1st - Feb 1st</div>
+  </div>
         
         <div class="stat">
           <div class="stat-title">Processor</div>
@@ -37,14 +31,19 @@
         
           <div class="stat">
             <div class="stat-title">Disk usage</div>
-            <div class="stat-value">{{ system_info.root_disk_percent }}%</div>
-            <div class="stat-desc">↘︎ 90 (14%)</div>
+            <div class="radial-progress" style="--value:{{ system_info.root_disk_percent }};" role="progressbar">{{ system_info.root_disk_percent }}%</div>
           </div>
         
       </div>
-{% endblock %}
 
-{% block footer %}
+
+      
+      
+      <div hx-get="/net" hx-trigger="load,every 5s" ></div>
+      
+      {% endblock %}
+      
+      {% block footer %}
     <h3>FlaskApp is a Flask web application written in Python.</h3>
     
 {% endblock %}

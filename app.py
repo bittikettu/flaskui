@@ -48,6 +48,48 @@ def netsku():
     json_result = json.loads(reslut)
     return render_template('partials/netstat.html',netstat=json_result, utc_dt=datetime.datetime.utcnow())
 
+@app.route("/user", methods=['POST', 'GET'])
+def userformHandler():
+        # You can return a response if needed
+    if request.method == 'POST':
+        print(request.form)
+        print(request.form['email'])
+        print(request.form['username'])
+    body = f"<h1>Thanks {request.form['username']} for submitting your information</h1>"
+    body += f"<p>email: {request.form['email']}</p>"
+    body += f"<p>username: {request.form['username']}</p>"
+    body += f"<p>movie: {request.form['jepa']}</p>"
+    body += '<button class="btn btn-primary" hx-get="/userform" hx-trigger="click" hx-target="#userFormnew">New</button>'
+
+    jsondata = {'email': request.form['email'], 'username': request.form['username'], 'movie': request.form['jepa']}
+    
+    # save the data to a csv file
+    with open('data.csv', 'a') as f:
+        f.write(f"{request.form['email']};{request.form['username']};{request.form['jepa']};{request.form['postId']}\n")
+    
+    return make_response(
+        body,
+    )
+    #response = {'message': 'Data received successfully'}
+    #return jsonify(response)
+
+# create route for the data.csv which returns the csv file as a dictionary
+@app.route('/data')
+def data():
+    data = []
+    with open('data.csv', 'r') as f:
+        for line in f:
+            print(line)
+            line = line.strip()
+            line = line.split(';')
+            data.append({'email': line[0], 'username': line[1], 'movie': line[2]})
+    return jsonify(data)
+
+
+@app.route("/userform",methods=['GET'])
+def userform():
+    movies = ['The Godfather', 'The Shawshank Redemption', 'Schindler\'s List', 'Raging Bull', 'Casablanca', 'Citizen Kane', 'Gone with the Wind', 'The Wizard of Oz', 'One Flew Over the Cuckoo\'s Nest', 'Lawrence of Arabia']
+    return render_template('partials/userform.html', movies=movies, utc_dt=datetime.datetime.utcnow())
 
 @app.route("/syslog")
 def partsyslog():

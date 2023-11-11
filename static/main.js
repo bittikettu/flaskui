@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     //Alpine.start();
+    htmx.logAll();
 });
 
 function getData() {
