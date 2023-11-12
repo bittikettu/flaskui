@@ -55,12 +55,14 @@ def userformHandler():
         print(request.form)
         print(request.form['email'])
         print(request.form['username'])
-    body = f"<h1>Thanks {request.form['username']} for submitting your information</h1>"
-    body += f"<p>email: {request.form['email']}</p>"
-    body += f"<p>username: {request.form['username']}</p>"
-    body += f"<p>movie: {request.form['jepa']}</p>"
-    body += '<button class="btn btn-primary" hx-get="/userform" hx-trigger="click" hx-target="#userFormnew">New</button>'
 
+    body = f'''
+    <h1>Thanks {request.form['username']} for submitting your information</h1>
+    <p>email: {request.form['email']}</p>
+    <p>username: {request.form['username']}</p>
+    <p>movie: {request.form['jepa']}</p>
+    <button class="btn btn-primary" hx-get="/userform" hx-trigger="click" hx-target="#userFormnew">New</button>
+    '''
     jsondata = {'email': request.form['email'], 'username': request.form['username'], 'movie': request.form['jepa']}
     
     # save the data to a csv file
@@ -70,11 +72,8 @@ def userformHandler():
     return make_response(
         body,
     )
-    #response = {'message': 'Data received successfully'}
-    #return jsonify(response)
 
-# create route for the data.csv which returns the csv file as a dictionary
-@app.route('/data')
+@app.route('/answers')
 def data():
     data = []
     with open('data.csv', 'r') as f:
@@ -82,8 +81,10 @@ def data():
             print(line)
             line = line.strip()
             line = line.split(';')
-            data.append({'email': line[0], 'username': line[1], 'movie': line[2]})
-    return jsonify(data)
+            data.append(line) #({'email': line[0], 'username': line[1], 'movie': line[2], 'postId': line[3]})
+    print(data)
+    
+    return render_template('partials/answers.html', movies=data, utc_dt=datetime.datetime.utcnow())
 
 
 @app.route("/userform",methods=['GET'])
@@ -114,7 +115,8 @@ def download():
 
 @app.route("/")
 def index():
-    return render_template('index.html',system_info=system_info, utc_dt=datetime.datetime.utcnow())
+    system_info.get_disk_usage()
+    return render_template('index.html',system_info=SystemInfo(), utc_dt=datetime.datetime.utcnow())
 
 @app.route('/ipaddr', methods=['GET'])
 def ipaddr():
@@ -124,7 +126,7 @@ def ipaddr():
 
 @app.route('/about/')
 def about():
-    return render_template('about.html', system_info=system_info)
+    return render_template('about.html', system_info=SystemInfo())
 
 @app.route('/log')
 def log():
