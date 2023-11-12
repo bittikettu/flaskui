@@ -95,6 +95,10 @@ def userformHandler():
         body,
     )
 
+@app.route("/answer",methods=['GET'])
+def answer():
+    return render_template('answers.html', utc_dt=datetime.datetime.utcnow())
+
 @app.route('/answers')
 def data():
     data = []

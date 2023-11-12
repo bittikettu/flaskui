@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="answers" hx-get="/answers" hx-trigger="load"></div>
+{% endblock %}
+
+{% block footer %}
+    <h3>FlaskApp is a Flask web application written in Python.</h3>
+{% endblock %}
