@@ -1,6 +1,6 @@
 # app.py
 import datetime
-from flask import Flask, render_template, request, jsonify,make_response, send_file
+from flask import Flask, render_template, request, jsonify,make_response, send_file, redirect
 import platform
 import socket
 import psutil
@@ -41,6 +41,28 @@ class SystemInfo:
 
 system_info = SystemInfo()
 app = Flask(__name__)
+
+
+@app.route("/del/<int:linenumber>", methods=['DELETE'])
+def delete(linenumber):
+    print(linenumber)
+    with open('data.csv', 'r') as f:
+        lines = f.readlines()
+        for line in lines:
+            # print the line index
+            if(lines.index(line) == linenumber - 1):
+                print(line)
+                lines.remove(line)
+                break
+            
+    with open('data.csv', 'w') as f:
+        for line in lines:
+            f.write(line)
+
+    body = f'ok'
+    return make_response(
+            body,
+        )
 
 @app.route("/net")
 def netsku():
@@ -96,6 +118,8 @@ def userform():
 def partsyslog():
     reslut = run_system_command('cat /var/log/syslog')
     reslut = reslut.split('\n')
+    # limit line length to 100 chars
+    reslut = [line[:140] for line in reslut]
     reslut = list(filter(None, reslut))
     return render_template('partials/syslog.html',syslog=reslut, utc_dt=datetime.datetime.utcnow())
 

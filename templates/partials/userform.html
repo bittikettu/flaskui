@@ -1,19 +1,19 @@
 <div id="result" class="form-control w-60">
-<form id="userForm" hx-post="/user" hx-target="#result" hx-swap="outerHTML" >
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" class="input input-bordered w-full max-w-xs" required>
+  <form id="userForm" hx-post="/user" hx-target="#result" hx-swap="outerHTML" >
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" class="input input-bordered w-full max-w-xs" required>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" class="input input-bordered w-full max-w-xs" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" class="input input-bordered w-full max-w-xs" required>
 
-    <select id="jepa" name="jepa" class="select select-primary w-full max-w-xs">
-        <option disabled selected>What is the best TV show?</option>
-        {%for i in movies%}  
-        <option>{{ i }}</option>
-        {%endfor%}
-      </select>
+      <select id="jepa" name="jepa" class="select select-primary w-full max-w-xs">
+          <option disabled selected>What is the best TV show?</option>
+          {%for i in movies%}  
+          <option>{{ i }}</option>
+          {%endfor%}
+        </select>
 
-    <input type="hidden" id="postId" name="postId" value="{{utc_dt}}" />
-    <button hx-trigger="change" hx-get="/answers" hx-target="#answers" class="btn btn-primary" type="submit" hx-vals="#userForm">Submit</button>
-</form>
+      <input type="hidden" id="postId" name="postId" value="{{utc_dt}}" />
+      <button class="btn btn-primary" type="submit" hx-vals="#userForm">Submit</button>
+  </form>
 </div>

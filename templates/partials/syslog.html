@@ -6,7 +6,7 @@
   <div class="mockup-code">
         {%for i in syslog%}   
             <pre
-            data-prefix=""
+            data-prefix="{{loop.index}}"
             
             {% if 'warn' in i %}
             class="bg-yellow-900"
